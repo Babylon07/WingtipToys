@@ -92,8 +92,144 @@ namespace WingtipToys.Logic
             // the current price for each of those products in the cart. 
             // Sum all product price totals to get the cart total. 
             decimal? total = decimal.Zero;            total = (decimal?)(from cartItems in _db.ShoppingCartItems                               where cartItems.CartId == ShoppingCartId                                select(int?) cartItems.Quantity * cartItems.Product.UnitPrice).Sum();
-            // IF total !null return total, else return Decimal.Zero            return total ?? decimal.Zero;                                
+            // IF total !null return total, else return Decimal.Zero            return total ?? decimal.Zero;
         }
+
+        public ShoppingCartActions GetCart(HttpContext context)
+        {
+            using (var cart = new ShoppingCartActions())
+            {
+                cart.ShoppingCartId = cart.GetCartId();
+                return cart;
+            }
+        }
+
+
+       // Called by the 'UpdateCartItems' method on the ShoppingCart.aspx.cs
+        public void UpdateShoppingCartDatabase(String cartId, ShoppingCartUpdates[] CartItemUpdates)
+        {
+            using (var db = new WingtipToys.Models.ProductContext())
+            {
+                try
+                {
+                    int CartItemCount = CartItemUpdates.Count();
+                    List<CartItem> myCart = GetCartItems();
+                    foreach (var cartItem in myCart)
+                    {
+                        // Iterate through all rows within shopping cart list 
+                        for (int i = 0; i < CartItemCount; i++)
+                        {
+                            if (cartItem.Product.ProductID == CartItemUpdates[i].ProductId)
+                            {
+                                if (CartItemUpdates[i].PurchaseQuantity < 1 ||
+                               CartItemUpdates[i].RemoveItem == true)
+                                {
+                                    // Call RemoveItem...
+                                    RemoveItem(cartId, cartItem.ProductId);
+                                }
+                                else
+                                {
+                                   UpdateItem(cartId, cartItem.ProductId,
+                                   CartItemUpdates[i].PurchaseQuantity);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    throw new Exception("ERROR: Unable to Update Cart Database - " +
+                   exp.Message.ToString(), exp);
+                }
+            }
+        }
+        // Called if item has been marked to be removed, 
+        // or the quantity is less than one
+        public void RemoveItem(string removeCartID, int removeProductID)
+        {
+            using (var _db = new WingtipToys.Models.ProductContext())
+            {
+                try
+                {
+                    var myItem = (from c in _db.ShoppingCartItems
+                                  where c.CartId ==
+                                      removeCartID && c.Product.ProductID == removeProductID
+                                  select
+                                      c).FirstOrDefault();
+                    if (myItem != null)
+                    {
+                        // Remove Item. 
+                        _db.ShoppingCartItems.Remove(myItem);
+                        _db.SaveChanges();
+                    }
+                }
+                catch (Exception exp)
+                {
+                    throw new Exception("ERROR: Unable to Remove Cart Item - " +
+                   exp.Message.ToString(), exp);
+                }
+            }
+        }
+
+        // Called if no Purchace Qualntitly < 1 or
+        // No item to be removed
+        public void UpdateItem(string updateCartID, int updateProductID, int
+       quantity)
+        {
+            using (var _db = new WingtipToys.Models.ProductContext())
+            {
+                try
+                {
+                    var myItem = (from c in _db.ShoppingCartItems
+                                  where c.CartId ==
+                                      updateCartID && c.Product.ProductID == updateProductID
+                                  select
+                                      c).FirstOrDefault();
+                    if (myItem != null)
+                    {
+                        myItem.Quantity = quantity;
+                        _db.SaveChanges();
+                    }
+                }
+                catch (Exception exp)
+                {
+                    throw new Exception("ERROR: Unable to Update Cart Item - " +
+                   exp.Message.ToString(), exp);
+                }
+            }
+        }
+
+        public void EmptyCart()
+        {
+            ShoppingCartId = GetCartId();
+            var cartItems = _db.ShoppingCartItems.Where(
+            c => c.CartId == ShoppingCartId);
+            foreach (var cartItem in cartItems)
+            {
+                _db.ShoppingCartItems.Remove(cartItem);
+            }
+            // Save changes. 
+            _db.SaveChanges();
+        }
+
+        public int GetCount()
+        {
+            ShoppingCartId = GetCartId();
+
+            // Get the count of each item in the cart and sum them up 
+            int? count = (from cartItems in _db.ShoppingCartItems
+                          where cartItems.CartId == ShoppingCartId
+                          select (int?)cartItems.Quantity).Sum();
+            // Return 0 if all entries are null 
+            return count ?? 0;
+        }
+
+        public struct ShoppingCartUpdates
+        {
+            public int ProductId;
+            public int PurchaseQuantity;
+            public bool RemoveItem;
+        } 
     }
 }
   
