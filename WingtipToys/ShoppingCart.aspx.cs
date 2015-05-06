@@ -14,7 +14,7 @@ namespace WingtipToys
         protected void Page_Load(object sender, EventArgs e)
         {
            
-            // Show users cart total or maeessage if total = 0
+            // Show users cart total or message if total = 0
             using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
             {
                 decimal cartTotal = 0;

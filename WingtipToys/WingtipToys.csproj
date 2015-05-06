@@ -216,6 +216,7 @@
     <Content Include="Catalog\Images\Thumbs.db" />
     <Content Include="Catalog\Images\Thumbs\Thumbs.db" />
     <Content Include="Wingtip class diagram.cd" />
+    <Content Include="WingtipToysNotes.txt" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ProductDetails.aspx" />
     <Content Include="ProductList.aspx" />
