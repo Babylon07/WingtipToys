@@ -56,9 +56,11 @@ namespace WingtipToys
             {
                 String cartId = usersShoppingCart.GetCartId();
 
+                // Create a new ShoppingCardUpdates called cartUpdates
                 ShoppingCartActions.ShoppingCartUpdates[] cartUpdates = new
                         ShoppingCartActions.ShoppingCartUpdates[CartList.Rows.Count];
 
+                // Loop through the CartList control
                 for (int i = 0; i < CartList.Rows.Count; i++ )
                 {
                     IOrderedDictionary rowValues = new OrderedDictionary();
