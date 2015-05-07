@@ -18,7 +18,8 @@ namespace WingtipToys
         protected void Page_Load(object sender, EventArgs e)
         {
            
-            // Show users cart total or message if total = 0
+            //  Call the Getotal method -Create a new instance of ShoppingCartActions and
+            //use it to show users cart total or message if total = 0
             using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
             {
                 decimal cartTotal = 0;

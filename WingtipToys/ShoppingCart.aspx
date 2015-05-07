@@ -9,7 +9,7 @@ Inherits="WingtipToys.ShoppingCart" %>
                     ItemType="WingtipToys.Models.CartItem" 
                     SelectMethod="GetShoppingCartItems" 
                     CssClass="table table-striped table-bordered" > 
-                <Columns>  <asp:BoundField DataField="ProductID" HeaderText="ID" 
+                        <Columns>  <asp:BoundField DataField="ProductID" HeaderText="ID" 
                     SortExpression="ProductID" /> 
                             <asp:BoundField DataField="Product.ProductName" HeaderText="Name" /> 
                             <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)" 

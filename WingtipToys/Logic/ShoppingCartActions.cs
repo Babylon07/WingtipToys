@@ -100,7 +100,7 @@ namespace WingtipToys.Logic
 
         }
 
-        public ShoppingCartActions GetCart(HttpContext context)
+        public ShoppingCartActions GetCart (HttpContext context)
         {
             using (var cart = new ShoppingCartActions())
             {
@@ -108,7 +108,7 @@ namespace WingtipToys.Logic
                 return cart;
             }
         }
-
+        
 
        // Called by the 'UpdateCartItems' method on the ShoppingCart.aspx.cs
         public void UpdateShoppingCartDatabase(String cartId, ShoppingCartUpdates[] CartItemUpdates)
