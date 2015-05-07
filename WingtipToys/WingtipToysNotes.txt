@@ -1,2 +1,3 @@
 ﻿
 === General notes for WingtipTtoys project
+1. Created Entity classes: Product.cs & Category.cs

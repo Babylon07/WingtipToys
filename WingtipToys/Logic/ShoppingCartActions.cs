@@ -91,8 +91,13 @@ namespace WingtipToys.Logic
             // Multiply product price by quantity of that product to get 
             // the current price for each of those products in the cart. 
             // Sum all product price totals to get the cart total. 
-            decimal? total = decimal.Zero;            total = (decimal?)(from cartItems in _db.ShoppingCartItems                               where cartItems.CartId == ShoppingCartId                                select(int?) cartItems.Quantity * cartItems.Product.UnitPrice).Sum();
-            // IF total !null return total, else return Decimal.Zero            return total ?? decimal.Zero;
+            decimal? total = decimal.Zero;
+            total = (decimal?)(from cartItems in _db.ShoppingCartItems
+                               where cartItems.CartId == ShoppingCartId
+                                select(int?) cartItems.Quantity * cartItems.Product.UnitPrice).Sum();
+            // IF total !null return total, else return Decimal.Zero
+            return total ?? decimal.Zero;
+
         }
 
         public ShoppingCartActions GetCart(HttpContext context)
@@ -229,7 +234,9 @@ namespace WingtipToys.Logic
             public int ProductId;
             public int PurchaseQuantity;
             public bool RemoveItem;
-        } 
+        } 
+
+
     }
 }
   

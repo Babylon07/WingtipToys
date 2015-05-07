@@ -49,6 +49,7 @@ Inherits="WingtipToys.ShoppingCart" %>
                      <!--Checkout Placeholder --> 
                 </td> 
              </tr> 
-        </table> 
+        </table> 
+
 </asp:Content> 
 
