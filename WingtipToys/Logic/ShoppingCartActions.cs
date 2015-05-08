@@ -14,11 +14,12 @@ namespace WingtipToys.Logic
         public const string CartSessionKey = "CartId";
 
         // Recieve call from 'usersShoppingCart' located in AddToCart page
-        // that passes the rawId (Original ProductID query string) parameter
+        // that passes the rawId  parameter
         public void AddToCart(int id)
         {
-            // Store return from GetCartId method below in var 'ShoppingCartId'
+            // Call GetCartId() and assign to ShoppingCartId'
             ShoppingCartId = GetCartId();
+            // Query database 
             var cartItem = _db.ShoppingCartItems.SingleOrDefault(c => c.CartId == ShoppingCartId 
                 && c.ProductId == id);
 

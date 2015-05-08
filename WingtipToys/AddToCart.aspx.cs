@@ -19,10 +19,10 @@ namespace WingtipToys
             string rawId = Request.QueryString["productID"];
             int productId;
             
-            // Create a new intance of Shopping cart and call the 'AddToCart' method
-            // located in ShoppingCartActions.cs with it, using 'rawId' as parameter.
+            // Check 'rawId' isnt null and parse to int 'productId '       
             if (!String.IsNullOrEmpty(rawId) && int.TryParse(rawId, out productId))
             {
+                // Create a new ShoppinCartActions object and call AddToCart 
                 using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
                 {
                     usersShoppingCart.AddToCart(Convert.ToInt16(rawId));
