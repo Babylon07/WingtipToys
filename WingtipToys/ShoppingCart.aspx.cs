@@ -8,7 +8,8 @@ using WingtipToys.Models;
 using WingtipToys.Logic;
 using System.Collections.Specialized;
 using System.Collections;
-using System.Web.ModelBinding; 
+using System.Web.ModelBinding; 
+
 
 namespace WingtipToys
 {
@@ -66,7 +67,8 @@ namespace WingtipToys
                     CheckBox cbRemove = new CheckBox();
                     cbRemove = (CheckBox)CartList.Rows[i].FindControl("Remove");
                     cartUpdates[i].RemoveItem = cbRemove.Checked;
-                                        TextBox quantityTextBox = new TextBox();
+                    
+                    TextBox quantityTextBox = new TextBox();
                     quantityTextBox = (TextBox)CartList.Rows[i].FindControl("PurchaseQuantity");
 
                     cartUpdates[i].PurchaseQuantity = Convert.ToInt16(quantityTextBox.Text.ToString()); 
@@ -76,7 +78,8 @@ namespace WingtipToys
                 usersShoppingCart.UpdateShoppingCartDatabase(cartId, cartUpdates);
                 CartList.DataBind();
                 lblTotal.Text = String.Format("{0:c}", usersShoppingCart.GetTotal());
-                return usersShoppingCart.GetCartItems();
+                return usersShoppingCart.GetCartItems();
+
             }
         }
 
