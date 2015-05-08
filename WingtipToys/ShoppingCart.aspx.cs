@@ -18,7 +18,8 @@ namespace WingtipToys
         protected void Page_Load(object sender, EventArgs e)
         {
            
-            // Show users cart total or message if total = 0
+            //  Call the Getotal method -Create a new instance of ShoppingCartActions and
+            //use it to show users cart total or message if total = 0
             using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
             {
                 decimal cartTotal = 0;
@@ -55,9 +56,11 @@ namespace WingtipToys
             {
                 String cartId = usersShoppingCart.GetCartId();
 
+                // Create a new ShoppingCardUpdates called cartUpdates
                 ShoppingCartActions.ShoppingCartUpdates[] cartUpdates = new
                         ShoppingCartActions.ShoppingCartUpdates[CartList.Rows.Count];
 
+                // Loop through the CartList control
                 for (int i = 0; i < CartList.Rows.Count; i++ )
                 {
                     IOrderedDictionary rowValues = new OrderedDictionary();

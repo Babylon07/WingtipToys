@@ -54,7 +54,10 @@ Toys</a>
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                        <li><a runat="server" href="~/ProductList">Products</a></li> 
+                        <li><a runat="server" href="~/ProductList">Products</a></li>
+                        <li><a runat="server" href="~/ShoppingCart" ID ="cartCount"> &nbsp;</a></li> 
+
+
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -98,7 +101,8 @@ Toys</a>
     </ItemTemplate> 
  <ItemSeparatorTemplate> | </ItemSeparatorTemplate> 
  </asp:ListView> 
- </div> 
+ </div> 
+
 
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">

@@ -298,7 +298,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WingtipToys.Models.ProductDatabaseInitializer">
-    <Position X="9.75" Y="9.25" Width="1.5" />
+    <Position X="9.75" Y="9.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAQAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Models\ProductDatabaseInitializer.cs</FileName>

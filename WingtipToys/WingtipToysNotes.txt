@@ -1,2 +1,5 @@
 ﻿
 === General notes for WingtipTtoys project
+1. Created Entity classes: Product.cs & Category.cs
+2. Created ProductContext.cs for interacting with DB
+3. Created ProductDatabaseInitialize.cs to add intial data to database
