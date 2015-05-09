@@ -56,7 +56,7 @@ Toys</a>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         <li><a runat="server" href="~/ProductList">Products</a></li>
                         <li><a runat="server" href="~/ShoppingCart" ID ="cartCount"> &nbsp;</a></li> 
-
+                        <li><a runat="server" href="~/ShoppingCart" ID="A1">&nbsp;</a></li> 
 
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
