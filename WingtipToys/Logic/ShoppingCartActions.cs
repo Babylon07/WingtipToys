@@ -22,10 +22,10 @@ namespace WingtipToys.Logic
             // Query database 
             var cartItem = _db.ShoppingCartItems.SingleOrDefault(c => c.CartId == ShoppingCartId 
                 && c.ProductId == id);
-
+            // If there's not already one of this item in the users cart
             if (cartItem == null)
             {
-                // Create a new cart if none exits
+                // Create a new cart item if none exits
                 cartItem = new CartItem
                 {
                     ItemId = Guid.NewGuid().ToString(),

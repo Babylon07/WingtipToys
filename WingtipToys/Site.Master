@@ -51,6 +51,8 @@ Toys</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
+                        <li><a runat="server" id="adminLink" visible="false" 
+                                 href="~/Admin/AdminPage">Admin</a></li>
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
@@ -87,16 +89,16 @@ Toys</a>
         </div>
 
         <div id="CategoryMenu" style="text-align: center"> 
-        <asp:ListView ID="categoryList" 
-         ItemType="WingtipToys.Models.Category" 
-            runat="server" 
-            SelectMethod="GetCategories" > 
         
+            <asp:ListView ID="categoryList" 
+                 ItemType="WingtipToys.Models.Category" 
+                    runat="server" 
+                SelectMethod="GetCategories" >        
             <ItemTemplate> 
             <b style="font-size: large; font-style: normal"> 
-            <a href="/ProductList.aspx?id=<%#: Item.CategoryID %>"> 
-            <%#: Item.CategoryName %> 
-                </a> 
+            <a href="<%#: GetRouteUrl("ProductsByCategoryRoute", new {categoryName = Item.CategoryName}) %>">
+            <%#: Item.CategoryName %>
+        </a>
             </b> 
     </ItemTemplate> 
  <ItemSeparatorTemplate> | </ItemSeparatorTemplate> 

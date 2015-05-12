@@ -114,6 +114,7 @@ namespace WingtipToys
                 Session["payment_amt"] = usersShoppingCart.GetTotal();
             }
             Response.Redirect("Checkout/CheckoutStart.aspx");
-        } 
+        } 
+
     }
 }

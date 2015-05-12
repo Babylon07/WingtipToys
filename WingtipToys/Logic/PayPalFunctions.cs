@@ -59,8 +59,8 @@ public class NVPAPICaller
             host = host_SB;
         }
 
-        string returnURL = "https://localhost:50286/Checkout/CheckoutReview.aspx";
-        string cancelURL = "https://localhost:50286/Checkout/CheckoutCancel.aspx";
+        string returnURL = "https://localhost:44301/Checkout/CheckoutReview.aspx";
+        string cancelURL = "https://localhost:44301/Checkout/CheckoutCancel.aspx";
 
         NVPCodec encoder = new NVPCodec();
         encoder["METHOD"] = "SetExpressCheckout";
@@ -180,7 +180,7 @@ public class NVPAPICaller
     public string HttpCall(string NvpRequest)
     {
         string url = pEndPointURL;
-
+        
         string strPost = NvpRequest + "&" + buildCredentialsNVPString();
         strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(BNCode);
 
@@ -196,9 +196,10 @@ public class NVPAPICaller
                 myWriter.Write(strPost);
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            // No logging for this tutorial.
+            // Log the exception.
+            WingtipToys.Logic.ExceptionUtility.LogException(e, "HttpCall in PayPalFunction.cs");
         }
 
         //Retrieve the Response returned from the NVP API call to PayPal.
