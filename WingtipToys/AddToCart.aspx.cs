@@ -15,7 +15,7 @@ namespace WingtipToys
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Get the ProductID query string from 'ProductList.aspx'
+            // ------- Get the ProductID query string from 'ProductList.aspx'
             string rawId = Request.QueryString["productID"];
             int productId;
             
