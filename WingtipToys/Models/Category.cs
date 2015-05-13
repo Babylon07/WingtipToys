@@ -14,6 +14,7 @@ namespace WingtipToys.Models
         [Display(Name = "Product Description")]
         public string Description { get; set; }
 
+        // Collection navigation property
         public virtual ICollection<Product> Products { get; set; }
     }
 }

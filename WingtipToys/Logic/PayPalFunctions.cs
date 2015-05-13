@@ -33,9 +33,9 @@ public class NVPAPICaller
     //Replace <Your API Username> with your API Username
     //Replace <Your API Password> with your API Password
     //Replace <Your Signature> with your Signature
-    public string APIUsername = "<lgodden-facilitator_api1.googlemail.com>";
-    private string APIPassword = "<RWKNBMZYKDRZCFJK>";
-    private string APISignature = "<An5ns1Kso7MWUdW4ErQKJJJ4qi4-AhFKWSRVX9iPXysdfdNX0uOBl19z>";
+    public string APIUsername = "lgodden-facilitator_api1.googlemail.com";
+    private string APIPassword = "RWKNBMZYKDRZCFJK";
+    private string APISignature = "An5ns1Kso7MWUdW4ErQKJJJ4qi4-AhFKWSRVX9iPXysdfdNX0uOBl19z";
     private string Subject = "";
     private string BNCode = "PP-ECWizard";
 
@@ -180,7 +180,7 @@ public class NVPAPICaller
     public string HttpCall(string NvpRequest)
     {
         string url = pEndPointURL;
-        
+
         string strPost = NvpRequest + "&" + buildCredentialsNVPString();
         strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(BNCode);
 
@@ -196,10 +196,9 @@ public class NVPAPICaller
                 myWriter.Write(strPost);
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            // Log the exception.
-            WingtipToys.Logic.ExceptionUtility.LogException(e, "HttpCall in PayPalFunction.cs");
+            // No logging for this tutorial.
         }
 
         //Retrieve the Response returned from the NVP API call to PayPal.
@@ -240,12 +239,12 @@ public class NVPAPICaller
     }
 }
 
-public sealed class NVPCodec : NameValueCollection
-{
-    private const string AMPERSAND = "&";
-    private const string EQUALS = "=";
-    private static readonly char[] AMPERSAND_CHAR_ARRAY = AMPERSAND.ToCharArray();
-    private static readonly char[] EQUALS_CHAR_ARRAY = EQUALS.ToCharArray();
+    public sealed class NVPCodec : NameValueCollection
+    {
+        private const string AMPERSAND = "&";
+        private const string EQUALS = "=";
+        private static readonly char[] AMPERSAND_CHAR_ARRAY = AMPERSAND.ToCharArray();
+        private static readonly char[] EQUALS_CHAR_ARRAY = EQUALS.ToCharArray();
 
     public string Encode()
     {

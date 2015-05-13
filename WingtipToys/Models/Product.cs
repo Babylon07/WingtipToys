@@ -21,6 +21,7 @@ namespace WingtipToys.Models
 
         public int? CategoryID { get; set; }
 
+        // Navigation property
         public virtual Category Category { get; set; }
     }
 }
