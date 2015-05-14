@@ -43,7 +43,7 @@ namespace WingtipToys.Logic
             else
             {
                 // If the item does exist in the cart, 
-                // then add one to the quantity. 
+                // then add one to the quantity 
                 cartItem.Quantity++;
             }
             _db.SaveChanges();
