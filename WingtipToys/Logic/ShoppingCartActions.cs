@@ -176,10 +176,9 @@ namespace WingtipToys.Logic
             }
         }
 
-        // Called if no Purchace Qualntitly < 1 or
+        
         // No item to be removed
-        public void UpdateItem(string updateCartID, int updateProductID, int
-       quantity)
+        public void UpdateItem(string updateCartID, int updateProductID, int quantity)
         {
             using (var _db = new WingtipToys.Models.ProductContext())
             {
@@ -234,8 +233,9 @@ namespace WingtipToys.Logic
             public int ProductId;
             public int PurchaseQuantity;
             public bool RemoveItem;
-        } 
+        }
 
+        //Associates a newly logged in user with an anonymous shopping cart.
         public void MigrateCart(string cartId, string userName)
          { 
              var shoppingCart = _db.ShoppingCartItems.Where(c => c.CartId == cartId); 
@@ -246,7 +246,7 @@ namespace WingtipToys.Logic
          } 
         
             HttpContext.Current.Session[CartSessionKey] = userName; 
-         _db.SaveChanges(); 
+            _db.SaveChanges(); 
          } 
          
     } 

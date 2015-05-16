@@ -62,7 +62,7 @@ namespace WingtipToys
                 ShoppingCartActions.ShoppingCartUpdates[] cartUpdates = new
                         ShoppingCartActions.ShoppingCartUpdates[CartList.Rows.Count];
 
-                // Loop through the CartList control
+                // Loop through cart rows
                 for (int i = 0; i < CartList.Rows.Count; i++ )
                 {
                     IOrderedDictionary rowValues = new OrderedDictionary();
@@ -92,6 +92,7 @@ namespace WingtipToys
         {
             IOrderedDictionary values = new OrderedDictionary();
 
+            // Loop through each cell in number of rows in cart
             foreach (DataControlFieldCell cell in row.Cells)
             {
                 if (cell.Visible)

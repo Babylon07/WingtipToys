@@ -1,5 +1,8 @@
 ﻿using System.Data.Entity;
+using WingtipToys.Logic;
 namespace WingtipToys.Models
+    
+
 {
     public class ProductContext : DbContext
     {
@@ -14,6 +17,11 @@ namespace WingtipToys.Models
         public DbSet<CartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        
+        
+        
+       
+        
 
     }
 }

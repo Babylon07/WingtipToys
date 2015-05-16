@@ -43,11 +43,11 @@ namespace WingtipToys.Checkout
 
                     ProductContext _db = new ProductContext();
                     // Get the current order id.
-                    int currentOrderId = -1;
-                    if (Session["currentOrderId"] != string.Empty)
-                    {
-                        currentOrderId = Convert.ToInt32(Session["currentOrderID"]);
-                    }
+                     int currentOrderId = -1;
+                     if (Session["currentOrderId"] != null)
+                  {
+                    currentOrderId = Convert.ToInt32(Session["currentOrderID"]);
+                  }
                     Order myCurrentOrder;
                     if (currentOrderId >= 0)
                     {
