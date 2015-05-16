@@ -18,7 +18,7 @@ namespace WingtipToys
         protected void Page_Load(object sender, EventArgs e)
         {
            
-            //  Call the Getotal method -Create a new instance of ShoppingCartActions and
+            //  Call the Getotal method - Create a new instance of ShoppingCartActions and
             //use it to show users cart total or message if total = 0
             using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
             {
@@ -40,6 +40,7 @@ namespace WingtipToys
             }
         }
 
+        // Called by GridView "CartList"
         public List<CartItem> GetShoppingCartItems()
         {
             ShoppingCartActions actions = new ShoppingCartActions();
@@ -48,8 +49,8 @@ namespace WingtipToys
         }
 
 
-        // Gets the updated values for each item in the shopping cart. 
-        // Then calls the UpdateShoppingCartDatabase method in ShoppingCartActios.cs
+        // Called by 'UpdateBtn_Click' below Gets the updated values for each item in the shopping cart. 
+        // Then calls the UpdateShoppingCartDatabase method in ShoppingCartActios.cs.
         public List<CartItem> UpdateCartItems()
         {
 
@@ -57,7 +58,7 @@ namespace WingtipToys
             {
                 String cartId = usersShoppingCart.GetCartId();
 
-                // Create a new ShoppingCardUpdates called cartUpdates
+                // Create a new ShoppingCartUpdates called cartUpdates
                 ShoppingCartActions.ShoppingCartUpdates[] cartUpdates = new
                         ShoppingCartActions.ShoppingCartUpdates[CartList.Rows.Count];
 
@@ -102,6 +103,7 @@ namespace WingtipToys
             return values;
         }
 
+        // Called by clicking the Update button in ShoppingCart.aspx
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
             UpdateCartItems();

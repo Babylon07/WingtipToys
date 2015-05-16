@@ -35,14 +35,14 @@ AutoEventWireup="true"
                                         <a href="<%#: GetRouteUrl("ProductByNameRoute", new {productName = Item.ProductName}) %>">
                                             <image src='/Catalog/Images/Thumbs/<%#:Item.ImagePath%>'
                                                     width="100" height="75" border="1" />
-          </a> 
+                                        </a> 
                                         </td> 
                                     </tr> 
                                     <tr> 
                                         <td> 
                                             <a href="<%#: GetRouteUrl("ProductByNameRoute", new {productName = Item.ProductName}) %>">
                                                  <%#:Item.ProductName%>
-          </a>
+                                            </a>
                                         <br /> 
                                             <span> 
                                                 <b>Price: </b><%#:String.Format("{0:c}", Item.UnitPrice)%> 

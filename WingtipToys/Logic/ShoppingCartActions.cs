@@ -19,7 +19,7 @@ namespace WingtipToys.Logic
         {
             // Call GetCartId() and assign to ShoppingCartId'
             ShoppingCartId = GetCartId();
-            // Query database 
+            // Query database to see if same item in cart
             var cartItem = _db.ShoppingCartItems.SingleOrDefault(c => c.CartId == ShoppingCartId 
                 && c.ProductId == id);
             // If there's not already one of this item in the users cart
@@ -78,6 +78,7 @@ namespace WingtipToys.Logic
             return HttpContext.Current.Session[CartSessionKey].ToString();
         }
 
+        // Called by ShoppingCartActions 'actions' object in ShopingCart.aspx.cs
         public List<CartItem> GetCartItems()
         {
             ShoppingCartId = GetCartId();
@@ -86,12 +87,10 @@ namespace WingtipToys.Logic
             c => c.CartId == ShoppingCartId).ToList();
         }
 
+        // Called from usersShoppingCart object in 'ShoppingCart.aspx'
         public decimal GetTotal()
         {
-            ShoppingCartId = GetCartId();
-            // Multiply product price by quantity of that product to get 
-            // the current price for each of those products in the cart. 
-            // Sum all product price totals to get the cart total. 
+            ShoppingCartId = GetCartId();          
             decimal? total = decimal.Zero;
             total = (decimal?)(from cartItems in _db.ShoppingCartItems
                                where cartItems.CartId == ShoppingCartId
