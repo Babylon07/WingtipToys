@@ -28,14 +28,14 @@ namespace WingtipToys
             RoleActions roleActions = new RoleActions();
             roleActions.AddUserAndRole();
 
-            // Add Routes.
-            RegisterCustomRoutes(RouteTable.Routes);
+            // Add Routes.                      
+            RouteActions WingtipRoutes = new RouteActions();
+            WingtipRoutes.RegisterCustomRoutes(RouteTable.Routes);
         }
 
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs.
-
             // Get last error from the server
             Exception exc = Server.GetLastError();
 
@@ -50,19 +50,7 @@ namespace WingtipToys
             }
         }
 
-        void RegisterCustomRoutes(RouteCollection routes)
-        {
-            routes.MapPageRoute(
-                "ProductsByCategoryRoute",
-                "Category/{categoryName}",
-                "~/ProductList.aspx"
-            );
-            routes.MapPageRoute(
-                "ProductByNameRoute",
-                "Product/{productName}",
-                "~/ProductDetails.aspx"
-            );
-        }
+       
 
 
     }

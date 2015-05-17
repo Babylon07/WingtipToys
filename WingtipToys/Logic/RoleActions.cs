@@ -34,14 +34,17 @@ namespace WingtipToys.Logic
             {
                 IdRoleResult = roleMgr.Create(new IdentityRole { Name = "canEdit" });
             }
-
-            
+         
 
             // Create a UserManager object based on the UserStore object and the ApplicationDbContext  
             // object. Note that you can create new objects and use them as parameters in
-            // a single line of code, rather than using multiple lines of code, as you did
-            // for the RoleManager object.
+            // a single line of code - see comments below.
+          
+            
             var userMgr = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            // var myUser = new UserStore<ApplicationUser>(context);
+            // var userMgr = new UserManager<ApplicationUser>(myUser);
+            
             var appUser = new ApplicationUser
             {
                 UserName = "canEditUser@wingtiptoys.com",
