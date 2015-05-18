@@ -7,9 +7,7 @@ namespace WingtipToys.Models
     public class Order
     {
         public int OrderId { get; set; }
-
         public System.DateTime OrderDate { get; set; }
-
         public string Username { get; set; }
 
         [Required(ErrorMessage = "First Name is required")]

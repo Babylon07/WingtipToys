@@ -48,7 +48,7 @@ namespace WingtipToys
         }
 
 
-        // Gets the updated values for each item in the shopping cart. 
+        // Called by 'UpdateBtn_Click' Gets the updated values for each item in the shopping cart. 
         // Then calls the UpdateShoppingCartDatabase method in ShoppingCartActios.cs
         public List<CartItem> UpdateCartItems()
         {
@@ -91,6 +91,7 @@ namespace WingtipToys
         {
             IOrderedDictionary values = new OrderedDictionary();
 
+            // Loop through the table's cells
             foreach (DataControlFieldCell cell in row.Cells)
             {
                 if (cell.Visible)

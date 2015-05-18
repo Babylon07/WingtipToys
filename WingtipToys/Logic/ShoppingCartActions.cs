@@ -78,6 +78,7 @@ namespace WingtipToys.Logic
             return HttpContext.Current.Session[CartSessionKey].ToString();
         }
 
+        // Called by 'GetShoppingCartItems()' & UpdateCartItems() on ShoppingCart.aspx.cs
         public List<CartItem> GetCartItems()
         {
             ShoppingCartId = GetCartId();
@@ -127,7 +128,7 @@ namespace WingtipToys.Logic
                             if (cartItem.Product.ProductID == CartItemUpdates[i].ProductId)
                             {
                                 if (CartItemUpdates[i].PurchaseQuantity < 1 ||
-                               CartItemUpdates[i].RemoveItem == true)
+                                        CartItemUpdates[i].RemoveItem == true)
                                 {
                                     // Call RemoveItem...
                                     RemoveItem(cartId, cartItem.ProductId);
@@ -148,7 +149,7 @@ namespace WingtipToys.Logic
                 }
             }
         }
-        // Called if item has been marked to be removed, 
+        // Called by UpdateShoppingCartDatabase method if item has been marked to be removed, 
         // or the quantity is less than one
         public void RemoveItem(string removeCartID, int removeProductID)
         {
@@ -178,8 +179,7 @@ namespace WingtipToys.Logic
 
         // Called if no Purchace Qualntitly < 1 or
         // No item to be removed
-        public void UpdateItem(string updateCartID, int updateProductID, int
-       quantity)
+        public void UpdateItem(string updateCartID, int updateProductID, int quantity)
         {
             using (var _db = new WingtipToys.Models.ProductContext())
             {

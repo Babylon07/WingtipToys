@@ -78,6 +78,7 @@ namespace WingtipToys
             }
 
         }
+        // Called by ShoppingCart link in Header on Site Master page
         protected void Page_PreRender(object sender, EventArgs e)
         {
 
