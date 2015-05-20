@@ -68,10 +68,12 @@ namespace WingtipToys
                     rowValues = GetValues(CartList.Rows[i]);
                     cartUpdates[i].ProductId = Convert.ToInt32(rowValues["ProductID"]);
                     
+                    // See if any checkbox items have been checked to remove
                     CheckBox cbRemove = new CheckBox();
                     cbRemove = (CheckBox)CartList.Rows[i].FindControl("Remove");
                     cartUpdates[i].RemoveItem = cbRemove.Checked;
                     
+                    // See if any quantities have been updated
                     TextBox quantityTextBox = new TextBox();
                     quantityTextBox = (TextBox)CartList.Rows[i].FindControl("PurchaseQuantity");
 
@@ -87,6 +89,7 @@ namespace WingtipToys
             }
         }
 
+       // Lop through find and extract updated values
         public static IOrderedDictionary GetValues(GridViewRow row)
         {
             IOrderedDictionary values = new OrderedDictionary();

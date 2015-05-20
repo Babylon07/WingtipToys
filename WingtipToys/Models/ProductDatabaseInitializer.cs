@@ -11,10 +11,12 @@ namespace WingtipToys.Models
         protected override void Seed(ProductContext context) 
  
         { 
+            // Call methods below using ProductContext
             GetCategories().ForEach(c => context.Categories.Add(c)); 
             GetProducts().ForEach(p => context.Products.Add(p));  
         } 
  
+        // Populate the database with initial data for catogories and products
         private static List<Category> GetCategories()  
         {  
             var categories = new List<Category> {  

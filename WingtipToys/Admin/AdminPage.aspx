@@ -7,7 +7,8 @@
         <tr>
             <td><asp:Label ID="LabelAddCategory" 
                 runat="server">Category:
-                </asp:Label></td>
+                </asp:Label>
+            </td>
             <td>
                 <asp:DropDownList ID="DropDownAddCategory" runat="server" 
                     ItemType="WingtipToys.Models.Category" 
@@ -16,6 +17,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
+        
         <tr>
             <td><asp:Label ID="LabelAddName" runat="server">Name:</asp:Label></td>
             <td>
@@ -27,6 +29,7 @@
                     Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
         </tr>
+        
         <tr>
             <td><asp:Label ID="LabelAddDescription" runat="server">Description:</asp:Label></td>
             <td>
@@ -40,6 +43,7 @@
                 </asp:RequiredFieldValidator>
             </td>
         </tr>
+        
         <tr>
             <td><asp:Label ID="LabelAddPrice" runat="server">Price:</asp:Label></td>
             <td>

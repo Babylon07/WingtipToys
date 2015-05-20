@@ -20,17 +20,22 @@ namespace WingtipToys
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            // Initialize the product database.
+            // Initialize the product database from Entity classes.
             Database.SetInitializer(new ProductDatabaseInitializer());
 
-            // Add Routes.
-            RegisterCustomRoutes(RouteTable.Routes);
+
+            // Create the custom role and user.
+            RoleActions roleActions = new RoleActions();
+            roleActions.AddUserAndRole();
+
+            // Add Routes.                      
+            RouteActions WingtipRoutes = new RouteActions();
+            WingtipRoutes.RegisterCustomRoutes(RouteTable.Routes);
         }
 
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs.
-
             // Get last error from the server
             Exception exc = Server.GetLastError();
 
@@ -45,19 +50,7 @@ namespace WingtipToys
             }
         }
 
-        void RegisterCustomRoutes(RouteCollection routes)
-        {
-            routes.MapPageRoute(
-                "ProductsByCategoryRoute",
-                "Category/{categoryName}",
-                "~/ProductList.aspx"
-            );
-            routes.MapPageRoute(
-                "ProductByNameRoute",
-                "Product/{productName}",
-                "~/ProductDetails.aspx"
-            );
-        }
+       
 
 
     }

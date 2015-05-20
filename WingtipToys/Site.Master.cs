@@ -91,7 +91,7 @@ namespace WingtipToys
             }
         }
 
-
+        // Called by the ListView 'categoryList' in Site.Master
         public IQueryable<Category> GetCategories()
         {
             var _db = new WingtipToys.Models.ProductContext();

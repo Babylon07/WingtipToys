@@ -19,6 +19,8 @@ namespace WingtipToys
 
         }
 
+        //Called by ListView 'productList' in 'ProductList.aspx'
+        // and passed category id in the url querystring
         public IQueryable<Product> GetProducts(
                      [QueryString("id")] int? categoryId,
                      [RouteData] string categoryName)

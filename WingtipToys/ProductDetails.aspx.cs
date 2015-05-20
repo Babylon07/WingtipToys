@@ -17,9 +17,9 @@ namespace WingtipToys
 
         }
 
+        // Called by ListView 'productDetail'in 'ProductDetails.aspx
         public IQueryable<Product> GetProduct(
-                     [QueryString("ProductID")] int? productId,
-                     [RouteData] string productName)
+                     [QueryString("ProductID")] int? productId, [RouteData] string productName)
         {
             var _db = new WingtipToys.Models.ProductContext();
             IQueryable<Product> query = _db.Products;

@@ -51,6 +51,7 @@ public class NVPAPICaller
         APISignature = Signature;
     }
 
+    // Collects the test purchase information and product details from the shopping cart 
     public bool ShortcutExpressCheckout(string amt, ref string token, ref string retMsg)
     {
         if (bSandbox)
@@ -82,6 +83,8 @@ public class NVPAPICaller
                 encoder["L_PAYMENTREQUEST_0_NAME" + i] = myOrderList[i].Product.ProductName.ToString();
                 encoder["L_PAYMENTREQUEST_0_AMT" + i] = myOrderList[i].Product.UnitPrice.ToString();
                 encoder["L_PAYMENTREQUEST_0_QTY" + i] = myOrderList[i].Quantity.ToString();
+               
+                
             }
         }
 

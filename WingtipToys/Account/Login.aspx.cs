@@ -35,8 +35,7 @@ namespace WingtipToys.Account
                 // To enable password failures to trigger lockout, change to shouldLockout: true
                 var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
 
-                
-
+               
                 
                 switch (result)
                 {
@@ -45,6 +44,7 @@ namespace WingtipToys.Account
                             new WingtipToys.Logic.ShoppingCartActions();
                             String cartId = usersShoppingCart.GetCartId();
                             usersShoppingCart.MigrateCart(cartId, Email.Text);
+
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         break;
                     case SignInStatus.LockedOut:
